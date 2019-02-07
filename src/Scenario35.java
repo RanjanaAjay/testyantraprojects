@@ -20,23 +20,21 @@ public class Scenario35 {
 	   	driver.manage().window().maximize();
 	   	WebElement frame=driver.findElement(By.xpath("//iframe[@class='demo-frame']"));
 	   	driver.switchTo().frame(frame);
-	   	WebElement slider = driver.findElement(By.id("slider"));
+	   	WebElement slider = driver.findElement(By.xpath("//div[@id='slider']/span"));
 	    Actions builder = new Actions(driver);
-	    org.openqa.selenium.Dimension cursor=slider.getSize();
-	    int width=cursor.getWidth();
-	    int x=slider.getLocation().getX();
-	    for(int i=1;i<=2;i++) {
-	    	Thread.sleep(2000);
-	    	builder.clickAndHold(slider);
-	    	builder.moveByOffset(x,0).build().perform();
-	    	x=x+width;
+	 //   org.openqa.selenium.Dimension cursor=slider.getSize();
+	  //  int width=cursor.getWidth();
+	//    int x=slider.getLocation().getX();
+	    for(int i=0;i<101;i+=10) {
+	    	Thread.sleep(200);
+	    	builder.clickAndHold(slider).moveByOffset(i,0).perform();
+	    	//x=x+width;
 	    }
-	    int y=slider.getLocation().getX();
-	    for(int j=2;j>=1;j--) {
-	    	Thread.sleep(3000);
-	    	builder.clickAndHold(slider);
-	    	builder.moveByOffset(-y,0).build().perform();
-	    	y=y+width;
+	 //   int y=slider.getLocation().getX();
+	    for(int j=100;j>0;j-=10) {
+	    	Thread.sleep(300);
+	    	builder.clickAndHold(slider).moveByOffset(-j,0).perform();
+	    //	y=y+width;
 	    }
 	    
 Thread.sleep(1000);	
